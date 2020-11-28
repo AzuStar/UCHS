@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class UnitAIController : MonoBehaviour
 {
-    public Unit unit;
-    public NavMeshAgent agent;
+    public Unit PossessedUnit;
+    public NavMeshAgent Agent;
 
     Unit FindClosestUnit(UnitTeam team)
     {
@@ -15,9 +15,9 @@ public class UnitAIController : MonoBehaviour
         Unit closestUnit = null;
         foreach (Unit u in units)
         {
-            if (u.team != team)
+            if (u.Team != team)
                 continue;
-            float distance = Vector3.Distance(u.transform.position, unit.transform.position);
+            float distance = Vector3.Distance(u.transform.position, PossessedUnit.transform.position);
             if (!closestUnit || distance < closestDistance)
             {
                 closestDistance = distance;
@@ -33,17 +33,16 @@ public class UnitAIController : MonoBehaviour
         // TODO select best ability first
 
         Unit target = FindClosestUnit(UnitTeam.Player);
-        float distance = Vector3.Distance(target.transform.position, unit.transform.position);
+        float distance = Vector3.Distance(target.transform.position, PossessedUnit.transform.position);
 
-        if (target && distance > 1.5f) // TODO do some ability checks
+        if (target && distance > 4.0f) // TODO do some ability checks
         {
-            Debug.Log(distance);
-            agent.isStopped = false;
-            agent.SetDestination(target.transform.position);
+            Agent.isStopped = false;
+            Agent.SetDestination(target.transform.position);
         }
         else
         {
-            agent.isStopped = true;
+            Agent.isStopped = true;
         }
     }
 }
