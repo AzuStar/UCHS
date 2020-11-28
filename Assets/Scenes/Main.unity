@@ -1670,7 +1670,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1211833066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e191719254c23249a2a980e43ba1f74, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f28394416498784bacbbfc965e6a96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Exit: {fileID: 1204989838}
@@ -2244,10 +2244,8 @@ MonoBehaviour:
   boost: 3.5
   positionLerpTime: 0.2
   mouseSensitivityCurve:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: 0
+    - time: 0
       value: 0.5
       inSlope: 0
       outSlope: 5
@@ -2255,8 +2253,7 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 1
+    - time: 1
       value: 2.5
       inSlope: 0
       outSlope: 0
@@ -2319,13 +2316,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: -0.022957042, y: 0.97606146, z: -0.17338957, w: -0.12927918}
-  m_LocalPosition: {x: 2.32, y: 1.203, z: 2.378}
+  m_LocalRotation: {x: 0.031396545, y: 0.8581422, z: -0.5116316, w: -0.02897065}
+  m_LocalPosition: {x: 2.84, y: 5.167, z: 2.347}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 20.146, y: 195.09, z: 0.001}
+  m_LocalEulerAnglesHint: {x: 61.198, y: 189.781, z: 9.984}
 --- !u!114 &1687258586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2626,7 +2623,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1972264516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0abe51b3307fa458294df3a98aff31, type: 3}
+  m_Script: {fileID: 11500000, guid: 42e075b96d8b39048b5a6b3bd99ccc23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ActivatorButton: {fileID: 1972264518}
