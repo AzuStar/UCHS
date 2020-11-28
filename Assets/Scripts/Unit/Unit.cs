@@ -25,4 +25,15 @@ public class Unit : MonoBehaviour
     void Update()
     {
     }
+
+    public void DealDamage(Unit target, float dmg)
+    {
+        target.TakeDamage(this, dmg);
+    }
+
+    public void TakeDamage(Unit source, float dmg)
+    {
+        if ((Health -= dmg) <= 0)
+            Destroy(gameObject);
+    }
 }

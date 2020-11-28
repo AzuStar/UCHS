@@ -37,6 +37,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
             _Self.Activator.SetActive(true);
             _Self.CommandButtonsPalette.SetActive(false);
             GlobalVars._Self.PC.MovementAllowed = false;
+            _Self.SelectingTarget = true;
         }
 
         public void Update()
@@ -49,11 +50,15 @@ namespace UCHS.Assets.Scripts.Spells.UI
                     if (Physics.Raycast(ray, out hit))
                     {
                         if (hit.collider != null)
-                            if (hit.collider.GetComponent<Unit>().Team == UnitTeam.Enemy)
-                            {
-                                CancelTargeting();
-                            }
-
+                        {
+                            Debug.Log(hit.collider.name);
+                            if (hit.collider.GetComponent<Unit>() != null)
+                                if (hit.collider.GetComponent<Unit>().Team == UnitTeam.Enemy)
+                                {
+                                    GlobalVars._Self.PC.GetComponent<Unit>().DealDamage(hit.collider.GetComponent<Unit>(), 125);
+                                    CancelTargeting();
+                                }
+                        }
                     }
                 }
         }
