@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class UnitAbility : MonoBehaviour
 {
-    public float cooldownTime = 1000.0f;
-    private float lastUsedTime;
+    public float CooldownTime = 1000.0f;
+    private float LastUsedTime;
 
     // range in meters
-    public float range = 2.0f;
+    public float Range = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,15 +22,14 @@ public class UnitAbility : MonoBehaviour
 
     void Fire()
     {
-        lastUsedTime = Time.time;
+        LastUsedTime = Time.time;
     }
 
     bool CanFire()
     {
         Unit[] units = GameObject.FindObjectsOfType<Unit>();
         foreach (Unit unit in units) {
-            Debug.Log(unit);
-
+            // Debug.Log(unit);
         }
         return false;
     }

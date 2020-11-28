@@ -12,9 +12,9 @@ public enum UnitTeam : ushort
 
 public class Unit : MonoBehaviour
 {
-    public UnitTeam team = UnitTeam.Player;
-    public float health = 100;
-    public float maxHealth = 100;
+    public UnitTeam Team = UnitTeam.Player;
+    public float Health = 100;
+    public float MaxHealth = 100;
 
     // Start is called before the first frame update
     void Start()
