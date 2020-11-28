@@ -1,3 +1,4 @@
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
         public Button Exit;
         public Text Tooltip;
         public GameObject Activator;
+        public bool SelectingTarget = false;
 
         public GameObject CommandButtonsPalette;
         void Awake()
@@ -18,11 +20,15 @@ namespace UCHS.Assets.Scripts.Spells.UI
         }
         public void Start()
         {
-            Exit.onClick.AddListener(() =>
-            {
-                Activator.SetActive(false);
-                CommandButtonsPalette.SetActive(true);
-            });
+            Exit.onClick.AddListener(CancelTargeting);
+        }
+
+        public static void CancelTargeting()
+        {
+            _Self.Activator.SetActive(false);
+            _Self.CommandButtonsPalette.SetActive(true);
+            GlobalVars._Self.PC.MovementAllowed = true;
+            _Self.SelectingTarget = false;
         }
 
         public static void TargetSpell(string tooltip)
@@ -30,6 +36,26 @@ namespace UCHS.Assets.Scripts.Spells.UI
             _Self.Tooltip.text = tooltip;
             _Self.Activator.SetActive(true);
             _Self.CommandButtonsPalette.SetActive(false);
+            GlobalVars._Self.PC.MovementAllowed = false;
+        }
+
+        public void Update()
+        {
+            if (SelectingTarget)
+                if (Input.GetMouseButton(0))
+                {
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        if (hit.collider != null)
+                            if (hit.collider.GetComponent<Unit>().Team == UnitTeam.Enemy)
+                            {
+                                CancelTargeting();
+                            }
+
+                    }
+                }
         }
     }
 }
