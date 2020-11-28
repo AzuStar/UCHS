@@ -28,7 +28,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
         {
             _Self.Activator.SetActive(false);
             _Self.CommandButtonsPalette.SetActive(true);
-            GlobalVars._Self.PC.MovementAllowed = true;
+            GameGlobals._Self.PlayerController.MovementAllowed = true;
             _Self.SelectingTarget = false;
         }
 
@@ -37,7 +37,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
             _Self.Tooltip.text = tooltip;
             _Self.Activator.SetActive(true);
             _Self.CommandButtonsPalette.SetActive(false);
-            GlobalVars._Self.PC.MovementAllowed = false;
+            GameGlobals._Self.PlayerController.MovementAllowed = false;
             _Self.SelectingTarget = true;
         }
 
@@ -53,13 +53,13 @@ namespace UCHS.Assets.Scripts.Spells.UI
                             if (hit.collider.GetComponent<Unit>() != null)
                                 if (hit.collider.GetComponent<Unit>().Team == UnitTeam.Enemy)
                                 {
-                                    GlobalVars._Self.PC.GetComponent<Animator>().SetBool("CastSpell", true);
+                                    GameGlobals._Self.PlayerController.GetComponent<Animator>().SetBool("CastSpell", true);
                                     // Animation
                                     Timer tim = new Timer(1.1f, false, () =>
                                     {
-                                        GlobalVars._Self.PC.GetComponent<Unit>().DealDamage(hit.collider.GetComponent<Unit>(), 125);
+                                        GameGlobals._Self.PlayerController.GetComponent<Unit>().DealDamage(hit.collider.GetComponent<Unit>(), 125);
                                         CancelTargeting();
-                                        GlobalVars._Self.PC.GetComponent<Animator>().SetBool("CastSpell", false);
+                                        GameGlobals._Self.PlayerController.GetComponent<Animator>().SetBool("CastSpell", false);
                                     });
                                     tim.Start();
                                 }
