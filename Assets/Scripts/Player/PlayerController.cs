@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public Camera PlayerCamera;
     public NavMeshAgent agent;
+    public bool MovementAllowed = true;
 
     // Start is called before the first frame update
     void Start()
@@ -18,14 +19,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButton(0))
-        {
-            Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (MovementAllowed)
             {
-                agent.SetDestination(hit.point);
+                Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    agent.SetDestination(hit.point);
+                }
             }
-        }
     }
 }

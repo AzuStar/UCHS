@@ -12,10 +12,12 @@ namespace UCHS.Assets.Scripts.Spells.UI
         public GameObject Activator;
 
         public GameObject CommandButtonsPalette;
-
-        public void Start()
+        void Awake()
         {
             _Self = this;
+        }
+        public void Start()
+        {
             Exit.onClick.AddListener(() =>
             {
                 Activator.SetActive(false);
