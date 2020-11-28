@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,16 +19,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0))
-            if (MovementAllowed)
-            {
-                Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
+        if (!EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(0))
+                if (MovementAllowed)
                 {
-                    agent.SetDestination(hit.point);
+                    Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        agent.SetDestination(hit.point);
+                    }
                 }
-            }
     }
 }
