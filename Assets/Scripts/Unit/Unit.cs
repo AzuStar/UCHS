@@ -14,11 +14,13 @@ public class Unit : MonoBehaviour
     public UnitTeam Team = UnitTeam.Player;
     public float Health = 100;
     public float MaxHealth = 100;
+    public UnitCanvasController CanvasController;
+    private bool IsAlive = true;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        CanvasController.OnHealthChanged(Health, MaxHealth);
     }
 
     // Update is called once per frame
@@ -34,6 +36,12 @@ public class Unit : MonoBehaviour
     public void TakeDamage(Unit source, float dmg)
     {
         if ((Health -= dmg) <= 0)
+        {
             Destroy(gameObject);
+        }
+        else
+        {
+            CanvasController.OnHealthChanged(Health, MaxHealth);
+        }
     }
 }

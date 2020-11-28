@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-    public Camera PlayerCamera;
     public NavMeshAgent agent;
     public bool MovementAllowed = true;
 
@@ -21,7 +20,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0))
             if (MovementAllowed)
             {
-                Ray ray = PlayerCamera.ScreenPointToRay(Input.mousePosition);
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))

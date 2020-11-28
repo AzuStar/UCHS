@@ -33,6 +33,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
 
         public static void TargetSpell(string tooltip)
         {
+            Debug.Log("targetting ");
             _Self.Tooltip.text = tooltip;
             _Self.Activator.SetActive(true);
             _Self.CommandButtonsPalette.SetActive(false);
