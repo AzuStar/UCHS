@@ -37,9 +37,10 @@ namespace UCHS.Assets.Scripts.Spells.Mechanics
             Description = tmp;
         }
 
-        public void LaunchSpell(NoxUnit source, NoxUnit target, T param)
+        public void LaunchSpell(NoxUnit source, NoxUnit target)
         {
-            Definition.Callback.Invoke(source, target, Level, param);
+
+            Definition.Callback.Invoke(source, target, Level, Definition.Params);
         }
 
         public string GetDescription()

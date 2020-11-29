@@ -25,8 +25,8 @@ namespace UCHS.Assets.Scripts.Spells.UI
 
         public Button Exit;
         public Text Tooltip;
-        public GameObject Activator;
-        public SpellActivator SelectingTarget;
+        public GameObject ActivatorPane;
+        public SpellActivator ActivatedSpell;
 
         public GameObject CommandButtonsPalette;
         void Awake()
@@ -40,24 +40,24 @@ namespace UCHS.Assets.Scripts.Spells.UI
 
         public static void CancelTargeting()
         {
-            _Self.Activator.SetActive(false);
+            _Self.ActivatorPane.SetActive(false);
             _Self.CommandButtonsPalette.SetActive(true);
             GameGlobals._Self.PlayerController.MovementAllowed = true;
-            _Self.SelectingTarget = false;
+            _Self.ActivatedSpell = null;
         }
 
-        public static void TargetSpell(string tooltip)
+        public static void TargetSpell(string tooltip, SpellActivator activator)
         {
             _Self.Tooltip.text = tooltip;
-            _Self.Activator.SetActive(true);
+            _Self.ActivatorPane.SetActive(true);
             _Self.CommandButtonsPalette.SetActive(false);
             GameGlobals._Self.PlayerController.MovementAllowed = false;
-            _Self.SelectingTarget = true;
+            _Self.ActivatedSpell = activator;
         }
 
         public void Update()
         {
-            if (SelectingTarget)
+            if (ActivatedSpell!=null)
                 if (Input.GetMouseButtonDown(0))
                 {
                     RaycastHit hit;
@@ -75,12 +75,13 @@ namespace UCHS.Assets.Scripts.Spells.UI
                                     // Animation
                                     Timer tim = new Timer(1.1f, false, () =>
                                     {
-                                        
+                                        ActivatedSpell.ActiveSpell.LaunchSpell(player, hitEnemy);
                                         player.GetComponent<Animator>().SetBool("CastSpell", false);
                                     });
                                     tim.Start();
                                 }
                 }
+
         }
     }
 }

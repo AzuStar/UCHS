@@ -11,6 +11,7 @@ namespace UCHS.Assets.Scripts.Spells.Mechanics
         public delegate void SpellAction(NoxUnit source, NoxUnit target, int level, T param);
         public abstract float CD { get; }
         public abstract SpellAction Callback { get; }
+        public abstract T Params { get; }
         // Player-only
         public abstract string PreparedDescription { get; }
         public abstract string IconResourcePath { get; }

@@ -1822,8 +1822,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Exit: {fileID: 251438526}
   Tooltip: {fileID: 1812159185}
-  Activator: {fileID: 1196887282}
-  SelectingTarget: 0
+  ActivatorPane: {fileID: 0}
+  ActivatedSpell: {fileID: 0}
   CommandButtonsPalette: {fileID: 573730276}
 --- !u!1 &1379669943
 GameObject:
@@ -2524,8 +2524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActivatorButton: {fileID: 1733803454}
-  Tooltip: Deals 125 physical damage to single enemy
-  ActivationKey: 0
+  ActivationKey: 113
+  OnCD: 0
 --- !u!114 &1733803454
 MonoBehaviour:
   m_ObjectHideFlags: 0

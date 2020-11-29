@@ -15,32 +15,36 @@ namespace UCHS.Assets.Scripts.Spells.UI
         public Button ActivatorButton;
         public UnityEngine.KeyCode ActivationKey;
         public Spell<LunarStarfallParams> ActiveSpell = GameGlobals._Self.sf.GenerateSpell(1);
-        public bool OnCD;
+        public bool OnCD = false;
 
 
-        public void PutOnCooldown()
+        public void ActivateTargeting()
         {
             ActivatorButton.interactable = false;
             OnCD = true;
+            SpellManager.TargetSpell(ActiveSpell.GetDescription(), this);
         }
 
-        public void EnableSpell(){
-
+        public void EnableSpell()
+        {
+            ActivatorButton.interactable = true;
+            OnCD = false;
         }
+
+
 
         // Start is called before the first frame update
         void Start()
         {
-            ActivatorButton.onClick.AddListener(() =>
-            {
-                PutOnCooldown();
-                SpellManager.TargetSpell(ActiveSpell.GetDescription());
-            });
+            ActivatorButton.onClick.AddListener(ActivateTargeting);
         }
 
         // Update is called once per frame
         void Update()
         {
+            if (!OnCD)
+                if (Input.GetKeyDown(ActivationKey))
+                    ActivateTargeting();
         }
     }
 }
