@@ -10,96 +10,22 @@ using static NoxFiretail.Scripts.Core.GameCommon;
 namespace NoxRaven
 {
     [Serializable]
-    public partial class NoxUnit : MonoBehaviour
+    public partial class NoxUnit
     {
-        protected internal static Dictionary<int, NoxUnit> Indexer = new Dictionary<int, NoxUnit>();
-        private static float KeepCorpsesFor = 25;
+        public static Dictionary<int, NoxUnit> Indexer = new Dictionary<int, NoxUnit>();
+        // private static float KeepCorpsesFor = 25;
         public const float RegenerationTimeout = 0.04f;
         /// <summary>
         /// Default game reduction constant.
         /// </summary>
         public const float ARMOR_CONST = 0.06f;
 
-        /// <summary>
-        /// Put this initializer somewhere after all players have been initialized. Do this only after you have put all customtypes in the dictionary.
-        /// </summary>
-        static NoxUnit()
-        {
-            new Timer(RegenerationTimeout, true, () => { foreach (NoxUnit ue in Indexer.Values) ue.Regenerate(); }).Start();
-        }
-
-        void Awake()
+        void Start()
         {
             if (Indexer.ContainsKey(gameObject.GetInstanceID())) return;
 
-            Indexer[gameObject.GetInstanceID()] = new NoxUnit();
+            Indexer[gameObject.GetInstanceID()] = this;
             return;
-        }
-
-        protected NoxUnit()
-        {
-
-            // Regenerate = () =>
-            // {
-            //     Heal(RegenFlat * RegenerationTimeout);
-            //     ReplenishMana(RegenManaFlat * RegenerationTimeout);
-            // },
-            // AbilityDamage = () =>
-            // {
-            //     return (BlzGetUnitBaseDamage(this, 0) + 1 + GreenDamage) * DamageMultiplier;
-            // },
-            // WeaponDamage = () =>
-            // {
-            //     return (BlzGetUnitBaseDamage(this, 0) + 1 + GreenDamage) * DamageMultiplier;
-            // },
-            // OnCalculateTotalHP = () =>
-            // {
-            //     
-            // },
-            // OnAddBaseDamage = (int val) =>
-            // {
-            //     BlzSetUnitBaseDamage(_Self, GetBaseDamage() + val, 0);
-            //     SetGreenDamage(BonusDamage + R2I(BlzGetUnitBaseDamage(_Self, 0) * BonusDamagePercent));
-            // },
-            // OnAddBonusDamage = (int val) =>
-            // {
-            //     BonusDamage += val;
-            //     SetGreenDamage(BonusDamage + R2I(BlzGetUnitBaseDamage(_Self, 0) * BonusDamagePercent + Utils.ROUND_DOWN_CONST_OVERHEAD));
-
-            // },
-            // OnRemoval = () =>
-            // {
-            //     OnHits.Clear();
-            //     //AmHits.Clear();
-            //     DestroyTrigger(DamageTrig);
-            //     Indexer.Remove(GetHandleId(_Self));
-            //     OnHits = null;
-            //     Statuses = null;
-            //     RemoveUnit(this);
-            //     DamageTrig = null;
-            // },
-            // OnAddGreyArmor = (float val) =>
-            // {
-            //     SetGreenArmor(GreyArmor += val);
-            // },
-            // OnAddMoveSpeedpercent = (float val) =>
-            // {
-            //     MovementSpeedPercent += val;
-            //     SetUnitMoveSpeed(this, BaseMovementSpeed * MovementSpeedPercent);
-            // },
-            // OnAddBaseMoveSpeed = (float val) =>
-            // {
-            //     BaseMovementSpeed += val;
-            //     SetUnitMoveSpeed(this, BaseMovementSpeed * MovementSpeedPercent);
-            // },
-            // CalculateTotalMana
-            // WeaponDamage = () => { return 10; };
-            // SetBaseHP(BlzGetUnitMaxHP(u));
-            // BaseAttackCooldown = BlzGetUnitAttackCooldown(_Self, 0);
-            // AddAttackSpeed(0);
-            // GreyArmor = BlzGetUnitArmor(u);
-            // BaseMovementSpeed = GetUnitMoveSpeed(u);
-            // Damage Utilization
         }
 
         private void Remove(NoxUnit killer)
@@ -122,7 +48,7 @@ namespace NoxRaven
             OnRemoval(new RemovalEvent() { Target = this });
             OnHits.Clear();
             Indexer.Remove(gameObject.GetInstanceID());
-            Destroy(this);
+            Destroy(gameObject);
         }
 
         // /// <summary>
@@ -202,7 +128,7 @@ namespace NoxRaven
             MaxMana = ev.ExpectedTotal;
         }
 
-        protected virtual void Regenerate()
+        public virtual void Regenerate()
         {
             RegenerationTickEvent parsEvent = new RegenerationTickEvent()
             {

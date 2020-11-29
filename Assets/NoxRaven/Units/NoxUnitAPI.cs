@@ -25,7 +25,7 @@ namespace NoxRaven
         public void Damage(NoxUnit target, float damage)
         {
             target.Health -= damage;
-            if (target.Health <= 0) target.Remove(this);
+            if (target.Health <= 0 && target != null) target.Remove(this);
         }
 
         /// <summary>

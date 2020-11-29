@@ -329,7 +329,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3812927951143906663, guid: e67b8b594eeedde4fb799d5e15473d41, type: 3}
   m_PrefabInstance: {fileID: 1745830937}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875878899}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50f5535c16a7fb249a69748d4df12019, type: 3}
@@ -849,30 +849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
---- !u!1 &875878899 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3812927951143906681, guid: e67b8b594eeedde4fb799d5e15473d41, type: 3}
-  m_PrefabInstance: {fileID: 1745830937}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &875878900
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875878899}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 697baea5b27a8194680f0746fba86dc0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &877213887
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,8 +2669,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2049845717, guid: e67b8b594eeedde4fb799d5e15473d41, type: 3}
+    - target: {fileID: 5604905316700281602, guid: e67b8b594eeedde4fb799d5e15473d41, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 697baea5b27a8194680f0746fba86dc0, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e67b8b594eeedde4fb799d5e15473d41, type: 3}
 --- !u!1 &1812159183
 GameObject:
@@ -2838,7 +2817,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy5Prefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5507329606947546533, guid: 8ff920e33cb30214ca90d5ae35ed2c4f, type: 3}
+      propertyPath: Health
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507329606947546533, guid: 8ff920e33cb30214ca90d5ae35ed2c4f, type: 3}
+      propertyPath: MaxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4438851210554144004, guid: 8ff920e33cb30214ca90d5ae35ed2c4f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8ff920e33cb30214ca90d5ae35ed2c4f, type: 3}
 --- !u!1 &1871171791
 GameObject:
@@ -3300,7 +3288,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.78e-43, y: 6.1e-43, z: 0, w: -2.8057919}
+  m_BoundingSphereOverride: {x: 5.34e-43, y: 9.4e-44, z: 0, w: -7.5277596}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

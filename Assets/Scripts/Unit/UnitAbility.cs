@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NoxRaven;
 using UnityEngine;
 
 public class UnitAbility : MonoBehaviour
@@ -27,8 +28,8 @@ public class UnitAbility : MonoBehaviour
 
     bool CanFire()
     {
-        Unit[] units = GameObject.FindObjectsOfType<Unit>();
-        foreach (Unit unit in units) {
+        NoxUnit[] units = GameObject.FindObjectsOfType<NoxUnit>();
+        foreach (NoxUnit unit in units) {
             // Debug.Log(unit);
         }
         return false;

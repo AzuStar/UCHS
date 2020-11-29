@@ -177,7 +177,8 @@ GameObject:
   - component: {fileID: 5209296369720398328}
   - component: {fileID: 5209296369720398309}
   - component: {fileID: 5209296369720398308}
-  - component: {fileID: 5209296369720398306}
+  - component: {fileID: 4161083904932397379}
+  - component: {fileID: 3560518848239363968}
   m_Layer: 8
   m_Name: UnitPrefab
   m_TagString: Untagged
@@ -298,7 +299,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5209296369720398306
+--- !u!114 &4161083904932397379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -307,13 +308,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 5209296369720398331}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71b96082df606474e8ec40125cc67156, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b19b57df3d9bdb4c8ea7ca4cf984500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Corpse: 0
+  Ranged: 0
+  ArmorPenetration: 0
+  CritChance: 0
+  CritDamage: 1.5
+  Lifesteal: 0
+  SpellVamp: 0
+  HealingFromAllSources: 1
+  RegenFlat: 0
+  ManaFromAllSources: 1
+  RegenManaFlat: 0
+  DamageReduction: 0
+  TriggerChance: 1
   Team: 0
-  Health: 100
-  MaxHealth: 100
-  CanvasController: {fileID: 5209296370553095305}
+  Health: 0
+  MaxHealth: 1001
+  SpellAmp: 0
+  WeaponDamage: 0
+  Mana: 0
+  MaxMana: 0
+  Armour: 0
+  AttackReloadSpeed: 0
+--- !u!95 &3560518848239363968
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209296369720398331}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5209296370130617238
 GameObject:
   m_ObjectHideFlags: 0

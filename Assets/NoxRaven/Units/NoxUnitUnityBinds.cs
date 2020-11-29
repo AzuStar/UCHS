@@ -4,6 +4,12 @@ namespace NoxRaven
 {
     public partial class NoxUnit
     {
+        public enum UnitTeam : ushort
+        {
+            Player = 0,
+            Enemy = 1
+        }
+
         public UnitTeam Team = UnitTeam.Player;
         public float Health;
         public float MaxHealth;

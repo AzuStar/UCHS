@@ -37,7 +37,7 @@ namespace NoxRaven
         /// <summary>
         /// This is +xxx damage on unit.
         /// </summary>
-        private int GreenDamage = 0;
+        // private int GreenDamage = 0;
         /// <summary>
         /// This is flat bonus of green damage.
         /// </summary>
@@ -45,7 +45,7 @@ namespace NoxRaven
         /// <summary>
         /// This is also +xxx damage but according to current base damage.
         /// </summary>
-        private float BonusDamagePercent = 0;
+        // private float BonusDamagePercent = 0;
         /// <summary>
         /// Additive(+)
         /// Range: 0.00-1.00
@@ -139,8 +139,8 @@ namespace NoxRaven
         /// For example, passive ability with 25% activation chance to deal extra damage will have 50% chance if this value is 2.
         /// </summary>
         public float TriggerChance = 1;
-        private float MovementSpeedPercent = 1;
-        private float BaseMovementSpeed = 220;
+        // private float MovementSpeedPercent = 1;
+        // private float BaseMovementSpeed = 220;
 
     }
 }

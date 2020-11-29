@@ -1,19 +1,21 @@
 ﻿    using System.Collections;
 using System.Collections.Generic;
+using NoxRaven;
 using UnityEngine;
 using UnityEngine.AI;
+using static NoxRaven.NoxUnit;
 
 public class UnitAIController : MonoBehaviour
 {
-    public Unit PossessedUnit;
+    public NoxUnit PossessedUnit;
     public NavMeshAgent Agent;
 
-    Unit FindClosestUnit(UnitTeam team)
+    NoxUnit FindClosestUnit(UnitTeam team)
     {
-        Unit[] units = GameObject.FindObjectsOfType<Unit>();
+        NoxUnit[] units = GameObject.FindObjectsOfType<NoxUnit>();
         float closestDistance = 0;
-        Unit closestUnit = null;
-        foreach (Unit u in units)
+        NoxUnit closestUnit = null;
+        foreach (NoxUnit u in units)
         {
             if (u.Team != team)
                 continue;
@@ -32,7 +34,7 @@ public class UnitAIController : MonoBehaviour
     {
         // TODO select best ability first
 
-        Unit target = FindClosestUnit(UnitTeam.Player);
+        NoxUnit target = FindClosestUnit(UnitTeam.Player);
         float distance = Vector3.Distance(target.transform.position, PossessedUnit.transform.position);
 
         if (target && distance > 4.0f) // TODO do some ability checks

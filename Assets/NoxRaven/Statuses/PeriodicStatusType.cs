@@ -15,6 +15,10 @@ namespace NoxRaven.Statuses
             PeriodicTimeoutTime = periodicTimeoutTime;
         }
 
+        private new Status ApplyStatus(NoxUnit source, NoxUnit target, int level){
+            return null;
+        }
+
         public override Status ApplyStatus(NoxUnit source, NoxUnit target, int level, float duration)
         {
             if (!target.ContainsStatus(Id))

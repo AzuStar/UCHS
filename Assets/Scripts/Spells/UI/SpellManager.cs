@@ -1,12 +1,26 @@
+using NoxRaven;
+using NoxRaven.Statuses;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 using static NoxFiretail.Scripts.Core.GameCommon;
+using static NoxRaven.NoxUnit;
 
 namespace UCHS.Assets.Scripts.Spells.UI
 {
+
     public class SpellManager : MonoBehaviour
     {
+
+        public static PeriodicStatusType Poison = new PeriodicStatusType((status) =>
+        {
+            status.Source.DealPhysicalDamage(status.Target, 10, false, false, true, false);
+        }, (status) =>
+        {
+        }, (status) =>
+        {
+        }, 0.5f);
+
         public static SpellManager _Self;
 
         public Button Exit;
@@ -50,17 +64,20 @@ namespace UCHS.Assets.Scripts.Spells.UI
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     if (Physics.Raycast(ray, out hit))
                         if (hit.collider != null)
-                            if (hit.collider.GetComponent<Unit>() != null)
-                                if (hit.collider.GetComponent<Unit>().Team == UnitTeam.Enemy)
+                            if (hit.collider.GetComponent<NoxUnit>() != null)
+                                if (hit.collider.GetComponent<NoxUnit>().Team == UnitTeam.Enemy)
                                 {
+                                    NoxUnit hitEnemy = hit.collider.GetComponent<NoxUnit>();
+                                    NoxUnit player = GameGlobals._Self.PlayerController.GetComponent<NoxUnit>();
                                     // don't you dare click multiple times
                                     CancelTargeting();
-                                    GameGlobals._Self.PlayerController.GetComponent<Animator>().SetBool("CastSpell", true);
+                                    player.GetComponent<Animator>().SetBool("CastSpell", true);
                                     // Animation
                                     Timer tim = new Timer(1.1f, false, () =>
                                     {
-                                        GameGlobals._Self.PlayerController.GetComponent<Unit>().DealDamage(hit.collider.GetComponent<Unit>(), 125);
-                                        GameGlobals._Self.PlayerController.GetComponent<Animator>().SetBool("CastSpell", false);
+                                        player.DealPhysicalDamage(hitEnemy, 125, false, true, true, false);
+                                        Poison.ApplyStatus(player, hitEnemy, 0, 5);
+                                        player.GetComponent<Animator>().SetBool("CastSpell", false);
                                     });
                                     tim.Start();
                                 }
