@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
+using NoxRaven;
 using UnityEngine;
 using UnityEngine.UI;
 using LevelDefinition = System.Collections.Generic.List<UnityEngine.GameObject>;
@@ -73,7 +74,7 @@ public class LevelDirector : MonoBehaviour
         _Self = this;
     }
 
-    public void OnUnitDeath(Unit unit)
+    public void OnUnitDeath(NoxUnit unit)
     {
         // doesn't work???
         EnemyList.Remove(unit.gameObject);
@@ -86,7 +87,7 @@ public class LevelDirector : MonoBehaviour
         }
     }
 
-    public void OnUnitTakeDamage(Unit unit, float damage)
+    public void OnUnitTakeDamage(NoxUnit unit, float damage)
     {
         // TODO score?
     }

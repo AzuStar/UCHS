@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NoxRaven;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
@@ -8,7 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public bool MovementAllowed = true;
-    public Unit PossessedUnit;
+    public NoxUnit PossessedUnit;
 
     // Start is called before the first frame update
     void Start()
