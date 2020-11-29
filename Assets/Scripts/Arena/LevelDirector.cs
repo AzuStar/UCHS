@@ -61,7 +61,7 @@ public class LevelDirector : MonoBehaviour
         var prefabs = levels[CurrentLevel];
         foreach (GameObject prefab in prefabs)
         {
-            var enemy = Instantiate<GameObject>(prefab, EnemySpawnPoint.transform);
+            var enemy = Instantiate<GameObject>(prefab, EnemySpawnPoint.transform.position, EnemySpawnPoint.transform.rotation);
             EnemyList.Add(enemy);
             EnemyListCount++;
         }
