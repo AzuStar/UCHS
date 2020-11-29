@@ -22,8 +22,9 @@ namespace NoxRaven
 
         void Start()
         {
+            Health = MaxHealth;
+            CanvasController.OnHealthChanged(Health, MaxHealth);
             if (Indexer.ContainsKey(gameObject.GetInstanceID())) return;
-
             Indexer[gameObject.GetInstanceID()] = this;
             return;
         }

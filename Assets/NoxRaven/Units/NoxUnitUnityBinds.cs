@@ -1,5 +1,7 @@
 using System;
 using NoxRaven.Events.EventTypes;
+using UnityEngine;
+
 namespace NoxRaven
 {
     public partial class NoxUnit
@@ -9,6 +11,10 @@ namespace NoxRaven
             Player = 0,
             Enemy = 1
         }
+
+        [Space(3f)]
+        [Header("Unity Stuff")]
+        public UnitCanvasController CanvasController;
 
         public UnitTeam Team = UnitTeam.Player;
         public float Health;

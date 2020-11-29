@@ -2525,6 +2525,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActivatorButton: {fileID: 1733803454}
   Tooltip: Deals 125 physical damage to single enemy
+  ActivationKey: 0
 --- !u!114 &1733803454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2819,7 +2820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5507329606947546533, guid: 8ff920e33cb30214ca90d5ae35ed2c4f, type: 3}
       propertyPath: Health
-      value: 500
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5507329606947546533, guid: 8ff920e33cb30214ca90d5ae35ed2c4f, type: 3}
       propertyPath: MaxHealth

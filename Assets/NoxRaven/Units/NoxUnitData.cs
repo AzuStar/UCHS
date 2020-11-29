@@ -8,6 +8,8 @@ using NoxRaven.Statuses;
 using NoxRaven.Events;
 using NoxRaven.Events.EventTypes;
 using NoxRaven.Events.Metas;
+using UnityEngine;
+
 namespace NoxRaven
 {
     /// <summary>
@@ -17,6 +19,7 @@ namespace NoxRaven
     /// </summary>
     public partial class NoxUnit
     {
+        [Header("Unit Stats")]
         /// <summary>
         /// Util info.
         /// </summary>

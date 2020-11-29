@@ -19,7 +19,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
         {
         }, (status) =>
         {
-        }, 0.5f);
+        }, 0.25f);
 
         public static SpellManager _Self;
 

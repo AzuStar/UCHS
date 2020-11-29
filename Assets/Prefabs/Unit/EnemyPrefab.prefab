@@ -29,6 +29,10 @@ PrefabInstance:
       propertyPath: MaxHealth
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 4161083904932397379, guid: 5f945f4c9402c2949b62d6597b850252, type: 3}
+      propertyPath: CanvasController
+      value: 
+      objectReference: {fileID: 6407968903468058357}
     - target: {fileID: 5209296369720398306, guid: 5f945f4c9402c2949b62d6597b850252, type: 3}
       propertyPath: Team
       value: 1
@@ -119,3 +123,14 @@ NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 5209296369720398308, guid: 5f945f4c9402c2949b62d6597b850252, type: 3}
   m_PrefabInstance: {fileID: 1199803266271675004}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6407968903468058357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5209296370553095305, guid: 5f945f4c9402c2949b62d6597b850252, type: 3}
+  m_PrefabInstance: {fileID: 1199803266271675004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173a1fa0128a20444a1ea927779d2457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

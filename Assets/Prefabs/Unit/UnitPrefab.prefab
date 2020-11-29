@@ -324,6 +324,7 @@ MonoBehaviour:
   RegenManaFlat: 0
   DamageReduction: 0
   TriggerChance: 1
+  CanvasController: {fileID: 5209296370553095305}
   Team: 0
   Health: 0
   MaxHealth: 1001

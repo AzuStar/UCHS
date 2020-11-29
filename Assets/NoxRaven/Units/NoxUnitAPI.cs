@@ -25,6 +25,7 @@ namespace NoxRaven
         public void Damage(NoxUnit target, float damage)
         {
             target.Health -= damage;
+            target.CanvasController.OnHealthChanged(target.Health, target.MaxHealth);
             if (target.Health <= 0 && target != null) target.Remove(this);
         }
 
