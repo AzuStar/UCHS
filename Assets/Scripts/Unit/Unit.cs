@@ -9,17 +9,26 @@ public enum UnitTeam : ushort
     Enemy = 1
 }
 
+public static class EnemyPrefab
+{
+    public static String Enemy1 { get { return "Unit/Enemy1Prefab"; } }
+    public static String Enemy2 { get { return "Unit/Enemy2Prefab"; } }
+    public static String Enemy3 { get { return "Unit/Enemy3Prefab"; } }
+    public static String Enemy4 { get { return "Unit/Enemy4Prefab"; } }
+    public static String Enemy5 { get { return "Unit/Enemy5Prefab"; } }
+}
+
 public class Unit : MonoBehaviour
 {
     public UnitTeam Team = UnitTeam.Player;
-    public float Health = 100;
+    private float Health;
     public float MaxHealth = 100;
     public UnitCanvasController CanvasController;
-    private bool IsAlive = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        Health = MaxHealth;
         CanvasController.OnHealthChanged(Health, MaxHealth);
     }
 
@@ -37,6 +46,7 @@ public class Unit : MonoBehaviour
     {
         if ((Health -= dmg) <= 0)
         {
+            LevelDirector._Self.OnUnitDeath(source);
             Destroy(gameObject);
         }
         else
