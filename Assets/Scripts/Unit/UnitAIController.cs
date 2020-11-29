@@ -37,12 +37,14 @@ public class UnitAIController : MonoBehaviour
 
         if (target && distance > 4.0f) // TODO do some ability checks
         {
+            PossessedUnit.SetRunning(true);
             Agent.isStopped = false;
             Agent.SetDestination(target.transform.position);
         }
         else
         {
             Agent.isStopped = true;
+            PossessedUnit.SetRunning(false);
         }
     }
 }

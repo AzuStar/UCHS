@@ -24,6 +24,7 @@ public class Unit : MonoBehaviour
     private float Health;
     public float MaxHealth = 100;
     public UnitCanvasController CanvasController;
+    public Animator Animator;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class Unit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 
     public void DealDamage(Unit target, float dmg)
@@ -53,5 +55,15 @@ public class Unit : MonoBehaviour
         {
             CanvasController.OnHealthChanged(Health, MaxHealth);
         }
+    }
+
+    public void SetRunning(bool state)
+    {
+        Animator.SetBool("IsRunning", state);
+    }
+
+    public void SetCastSpell(bool state)
+    {
+        Animator.SetBool("CastSpell", state);
     }
 }

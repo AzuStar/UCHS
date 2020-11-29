@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public bool MovementAllowed = true;
+    public Unit PossessedUnit;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,14 @@ public class PlayerController : MonoBehaviour
 
                     if (Physics.Raycast(ray, out hit))
                     {
+                        PossessedUnit.SetRunning(true);
                         agent.SetDestination(hit.point);
+                        agent.isStopped = false;
                     }
                 }
+        if (agent.remainingDistance < 0.25f)
+        {
+            PossessedUnit.SetRunning(false);
+        }
     }
 }

@@ -53,13 +53,16 @@ namespace UCHS.Assets.Scripts.Spells.UI
                             if (hit.collider.GetComponent<Unit>() != null)
                                 if (hit.collider.GetComponent<Unit>().Team == UnitTeam.Enemy)
                                 {
-                                    GameGlobals._Self.PlayerController.GetComponent<Animator>().SetBool("CastSpell", true);
+                                    GameGlobals._Self.PlayerController.PossessedUnit.Animator.SetBool("CastSpell", true);
+                                    GameGlobals._Self.PlayerController.agent.isStopped = true;
+                                    GameGlobals._Self.PlayerController.PossessedUnit.SetRunning(false);
+                                    GameGlobals._Self.PlayerController.PossessedUnit.transform.LookAt(hit.transform);
                                     // Animation
                                     Timer tim = new Timer(1.1f, false, () =>
                                     {
                                         GameGlobals._Self.PlayerController.GetComponent<Unit>().DealDamage(hit.collider.GetComponent<Unit>(), 125);
                                         CancelTargeting();
-                                        GameGlobals._Self.PlayerController.GetComponent<Animator>().SetBool("CastSpell", false);
+                                        GameGlobals._Self.PlayerController.PossessedUnit.Animator.SetBool("CastSpell", false);
                                     });
                                     tim.Start();
                                 }

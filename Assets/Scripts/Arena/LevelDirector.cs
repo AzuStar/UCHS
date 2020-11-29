@@ -13,7 +13,7 @@ public class LevelDirector : MonoBehaviour
 
     private List<GameObject> EnemyList = new List<GameObject>();
     private int EnemyListCount = 0;
-    private GameObject EnemySpawnPoint;
+    public GameObject EnemySpawnPoint;
     // List of levels of enemy prefabs to spawn
     public List<LevelDefinition> levels;
     public int CurrentLevel = 0;
@@ -24,7 +24,6 @@ public class LevelDirector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnemySpawnPoint = GameObject.FindGameObjectWithTag("Respawn");
         levels = new List<LevelDefinition> {
             new LevelDefinition {
                 Resources.Load<GameObject>(EnemyPrefab.Enemy1),
