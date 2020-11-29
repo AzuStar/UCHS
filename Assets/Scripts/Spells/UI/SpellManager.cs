@@ -26,7 +26,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
         public Button Exit;
         public Text Tooltip;
         public GameObject Activator;
-        public bool SelectingTarget = false;
+        public SpellActivator SelectingTarget;
 
         public GameObject CommandButtonsPalette;
         void Awake()
@@ -75,8 +75,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
                                     // Animation
                                     Timer tim = new Timer(1.1f, false, () =>
                                     {
-                                        player.DealPhysicalDamage(hitEnemy, 125, false, true, true, false);
-                                        Poison.ApplyStatus(player, hitEnemy, 0, 5);
+                                        
                                         player.GetComponent<Animator>().SetBool("CastSpell", false);
                                     });
                                     tim.Start();
