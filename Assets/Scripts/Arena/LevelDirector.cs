@@ -12,11 +12,13 @@ public class LevelDirector : MonoBehaviour
     public static LevelDirector _Self;
 
     private List<GameObject> EnemyList = new List<GameObject>();
+    private int EnemyListCount = 0;
     private GameObject EnemySpawnPoint;
     // List of levels of enemy prefabs to spawn
     public List<LevelDefinition> levels;
-    public float CurrentLevel = 0;
+    public int CurrentLevel = 0;
     public Text CurrentLevelText;
+    public Button StartLevelButton;
     public Text EnemiesText;
 
     // Start is called before the first frame update
@@ -27,7 +29,20 @@ public class LevelDirector : MonoBehaviour
             new LevelDefinition {
                 Resources.Load<GameObject>(EnemyPrefab.Enemy1),
                 Resources.Load<GameObject>(EnemyPrefab.Enemy1),
-                Resources.Load<GameObject>(EnemyPrefab.Enemy1)
+                Resources.Load<GameObject>(EnemyPrefab.Enemy1),
+            },
+            new LevelDefinition {
+                Resources.Load<GameObject>(EnemyPrefab.Enemy2),
+                Resources.Load<GameObject>(EnemyPrefab.Enemy2),
+                Resources.Load<GameObject>(EnemyPrefab.Enemy2),
+            },
+            new LevelDefinition {
+                Resources.Load<GameObject>(EnemyPrefab.Enemy1),
+                Resources.Load<GameObject>(EnemyPrefab.Enemy1),
+                Resources.Load<GameObject>(EnemyPrefab.Enemy1),
+                Resources.Load<GameObject>(EnemyPrefab.Enemy2),
+                Resources.Load<GameObject>(EnemyPrefab.Enemy2),
+                Resources.Load<GameObject>(EnemyPrefab.Enemy2),
             }
         };
         CurrentLevelText.text = "";
@@ -40,17 +55,18 @@ public class LevelDirector : MonoBehaviour
 
     }
 
-    public void StartLevel(int level)
+    public void StartNextLevel()
     {
-        CurrentLevelText.text = (level + 1).ToString();
-        var prefabs = levels[level];
+        CurrentLevelText.text = (CurrentLevel + 1).ToString();
+        StartLevelButton.interactable = false;
+        var prefabs = levels[CurrentLevel];
         foreach (GameObject prefab in prefabs)
         {
             var enemy = Instantiate<GameObject>(prefab, EnemySpawnPoint.transform);
-            Debug.Log(enemy);
             EnemyList.Add(enemy);
+            EnemyListCount++;
         }
-        EnemiesText.text = EnemyList.Count.ToString();
+        EnemiesText.text = EnemyListCount.ToString();
     }
 
     public void Awake()
@@ -62,11 +78,24 @@ public class LevelDirector : MonoBehaviour
     {
         // doesn't work???
         EnemyList.Remove(unit.gameObject);
-        EnemiesText.text = EnemyList.Count.ToString();
+        EnemyListCount--;
+        // EnemiesText.text = EnemyList.Count.ToString();
+        EnemiesText.text = EnemyListCount.ToString();
+        if (EnemyListCount <= 0)
+        {
+            OnLevelCompleted();
+        }
     }
 
     public void OnUnitTakeDamage(Unit unit, float damage)
     {
         // TODO score?
+    }
+
+    public void OnLevelCompleted()
+    {
+        CurrentLevel++;
+        CurrentLevelText.text = CurrentLevel.ToString();
+        StartLevelButton.interactable = true;
     }
 }

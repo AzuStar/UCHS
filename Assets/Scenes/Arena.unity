@@ -468,7 +468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Start Level
+  m_Text: 'Start Next Level
 
 '
 --- !u!222 &316678465
@@ -1517,9 +1517,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1517999904}
-        m_TargetAssemblyTypeName: ArenaDirector, Assembly-CSharp
-        m_MethodName: StartLevel
-        m_Mode: 3
+        m_TargetAssemblyTypeName: LevelDirector, Assembly-CSharp
+        m_MethodName: StartNextLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2287,6 +2287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentLevel: 0
   CurrentLevelText: {fileID: 877213889}
+  StartLevelButton: {fileID: 1082395330}
   EnemiesText: {fileID: 973148624}
 --- !u!4 &1517999905
 Transform:
