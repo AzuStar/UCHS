@@ -8,19 +8,26 @@ public class AggressiveAddition
 
     static AggressiveAddition()
     {
-        bool flag = true;
-        Object[] objs = Resources.FindObjectsOfTypeAll(typeof(GameObject));
-        foreach (GameObject obj in objs)
+        EditorApplication.playModeStateChanged += (state) =>
         {
-            if (obj.name == "NoxFiretail Core")
+            bool flag = true;
+            Object[] objs = Resources.FindObjectsOfTypeAll(typeof(GameObject));
+            foreach (GameObject obj in objs)
             {
-                if (obj.GetComponent<GameManager>() == null)
-                    obj.AddComponent<GameManager>();
-                flag = false;
-                break;
+                if (obj.name == "NoxFiretailCore")
+                {
+                    Component[] components = obj.GetComponents<Component>();
+                    foreach (Component comp in components)
+                        if (comp == null)
+                            GameObject.DestroyImmediate(comp);
+                    if (obj.GetComponent<GameManager>() == null)
+                        obj.AddComponent<GameManager>();
+                    flag = false;
+                    break;
+                }
             }
-        }
-        if (flag)
-            new GameObject("NoxFiretail Core", typeof(GameManager));
+            if (flag)
+                new GameObject("NoxFiretailCore", typeof(GameManager));
+        };
     }
 }

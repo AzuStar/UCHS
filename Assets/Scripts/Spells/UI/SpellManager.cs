@@ -53,12 +53,13 @@ namespace UCHS.Assets.Scripts.Spells.UI
                             if (hit.collider.GetComponent<Unit>() != null)
                                 if (hit.collider.GetComponent<Unit>().Team == UnitTeam.Enemy)
                                 {
+                                    // don't you dare click multiple times
+                                    CancelTargeting();
                                     GameGlobals._Self.PlayerController.GetComponent<Animator>().SetBool("CastSpell", true);
                                     // Animation
                                     Timer tim = new Timer(1.1f, false, () =>
                                     {
                                         GameGlobals._Self.PlayerController.GetComponent<Unit>().DealDamage(hit.collider.GetComponent<Unit>(), 125);
-                                        CancelTargeting();
                                         GameGlobals._Self.PlayerController.GetComponent<Animator>().SetBool("CastSpell", false);
                                     });
                                     tim.Start();
