@@ -465,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28594600367efa8428cd6395d7d6efac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 28594600367efa8428cd6395d7d6efac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -500,9 +500,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 28594600367efa8428cd6395d7d6efac, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 28594600367efa8428cd6395d7d6efac, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f1a8ab6fa0e199945b90a0637dc9b960, type: 2}
+      objectReference: {fileID: 2100000, guid: e32d977274127984e9819cab1b690436, type: 2}
     - target: {fileID: 919132149155446097, guid: 28594600367efa8428cd6395d7d6efac, type: 3}
       propertyPath: m_Name
       value: level_grass
@@ -2865,7 +2869,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 784c165920dc20847b9f56cb62080cf6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f1a8ab6fa0e199945b90a0637dc9b960, type: 2}
+      objectReference: {fileID: 2100000, guid: e32d977274127984e9819cab1b690436, type: 2}
     - target: {fileID: 919132149155446097, guid: 784c165920dc20847b9f56cb62080cf6, type: 3}
       propertyPath: m_Name
       value: level_plane
