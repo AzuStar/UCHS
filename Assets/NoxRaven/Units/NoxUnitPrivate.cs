@@ -31,6 +31,7 @@ namespace NoxRaven
 
         private void Remove(NoxUnit killer)
         {
+            // Corpse = true;
             KillEvent @event = new KillEvent()
             {
                 EventInfo = new NoxRaven.Events.Metas.KillMeta()
@@ -41,11 +42,10 @@ namespace NoxRaven
             };
             killer.OnKill(@event);
             OnDeath(@event);
-
             foreach (Status st in Statuses.Values)
-                st.Remove();
+                st.StopTimer();
             Statuses.Clear();// just in case
-
+            
             OnRemoval(new RemovalEvent() { Target = this });
             OnHits.Clear();
             Indexer.Remove(gameObject.GetInstanceID());

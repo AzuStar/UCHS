@@ -14,7 +14,7 @@ namespace UCHS.Assets.Scripts.Spells.UI
 
         public static PeriodicStatusType Poison = new PeriodicStatusType((status) =>
         {
-            status.Source.DealPhysicalDamage(status.Target, 10, false, false, true, false);
+            status.Source.DealPhysicalDamage(status.Target, 100, false, false, true, false);
         }, (status) =>
         {
         }, (status) =>

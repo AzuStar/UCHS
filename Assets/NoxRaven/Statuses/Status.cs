@@ -10,7 +10,7 @@ namespace NoxRaven.Statuses
         public SimpleStatusType Type { get; private set; }
         public NoxUnit Source { get; private set; }
         public NoxUnit Target { get; private set; }
-        Timer t;
+        Timer T;
         // effect SpecialEffect;
         /// <summary>
         /// How many stack have been applied, non-stackable has <see cref="Stacking"/> flag set to <see langword="false"/>.
@@ -84,11 +84,11 @@ namespace NoxRaven.Statuses
                 {
                     PeriodicTicks = 0;
                     TimeRemain = duration;
-                    t = new Timer(PeriodicTimeout, false, PeriodicTimerRestart);
+                    T = new Timer(PeriodicTimeout, false, PeriodicTimerRestart);
                 }
                 else
-                    t = new Timer(duration, false, Remove);
-                t.Start();
+                    T = new Timer(duration, false, Remove);
+                T.Start();
             }
             if (stacking) Stacks += initialStacks;
             if (Type.Apply != null)
@@ -108,9 +108,9 @@ namespace NoxRaven.Statuses
             TimeRemain -= PeriodicTimeout;
             if (TimeRemain > 0)
             {
-                t.Stop();
-                t = new Timer(PeriodicTimeout, false, PeriodicTimerRestart);
-                t.Start();
+                T.Stop();
+                T = new Timer(PeriodicTimeout, false, PeriodicTimerRestart);
+                T.Start();
             }
             else
                 Remove();
@@ -140,12 +140,12 @@ namespace NoxRaven.Statuses
             else
             {
                 if (!Permanent)
-                    if (t.TimeRemain() < duration)
+                    if (T.TimeRemain() < duration)
                     {
-                        t.Stop();
-                        TimeElapsed += t.TimeElapsed();
-                        t = new Timer(duration, false, Remove);
-                        t.Start();
+                        T.Stop();
+                        TimeElapsed += T.TimeElapsed();
+                        T = new Timer(duration, false, Remove);
+                        T.Start();
                     }
                 if (Stacking) Reset(bonusStacks, level); // reset if stack
                 else if (Level < level) Reset(0, level); // reset to new level
@@ -153,16 +153,21 @@ namespace NoxRaven.Statuses
             return this;
         }
 
+        public void StopTimer()
+        {
+            if (!Permanent)
+            {
+                T.Stop();
+                TimeElapsed += T.TimeElapsed();
+            }
+        }
+
         /// <summary>
         /// Kill status completely and cleanup
         /// </summary>
         public void Remove()
         {
-            if (!Permanent)
-            {
-                t.Stop();
-                TimeElapsed += t.TimeElapsed();
-            }
+            StopTimer();
             if (Type.Reset != null)
                 Type.Reset.Invoke(this);
             if (Type.OnRemove != null)
